@@ -41,8 +41,8 @@ We chose to attempt to recreate [figure 1](https://www.ncbi.nlm.nih.gov/pmc/arti
 ### Adding location data
 
 - Location data where the samples were collected was provided by the authors in the supplement
-  - This data is contained in `Zhong_et_al_haplotypes.csv' in the data folder of the github repository
-  - `Zhong_et_al_haplotypes.csv' also contains their sequence polymorphism data, so we extracted the location data to a new file called `locations.csv`
+  - This data is contained in `Zhong_et_al_haplotypes.csv` in the data folder of the github repository
+  - `Zhong_et_al_haplotypes.csv` also contains their sequence polymorphism data, so we extracted the location data to a new file called `locations.csv`
 - We wrote a Python script to extract location data from `locations.csv` and append it to `polymorphic_sites.nex`, creating `polymorphic_sites_locations.nex`
   - This Python script can be found as `Location_data.ipynb` in the software folder of the github repository
   - This script converts location data to a format readable by PopART for the next step
