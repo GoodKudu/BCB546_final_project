@@ -3,7 +3,7 @@ David Hall and Ludvin Mejia
 
 Files contained in this repository are a part of our final project for BCB 546 Spring 2023. The overall structure of this repository is as follows:
 
-###`Zhong_et_al-2013`
+### `Zhong_et_al-2013`
 A documentation, summary, and guide to our attempt at recreating figure 1 from Zhong et al.
 
 ## Presentation folder
