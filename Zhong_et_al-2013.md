@@ -24,6 +24,8 @@ We chose to attempt to recreate [figure 1](https://www.ncbi.nlm.nih.gov/pmc/arti
 - 66 representative sequences downloaded from [GenBank](https://www.ncbi.nlm.nih.gov/nuccore/KC690896,KC690897,KC690898,KC690899,KC690900,KC690901,KC690902,KC690903,KC690904,KC690905,KC690906,KC690907,KC690908,KC690909,KC690910,KC690911,KC690912,KC690913,KC690914,KC690915,KC690916,KC690917,KC690918,KC690919,KC690920,KC690921,KC690922,KC690923,KC690924,KC690925,KC690926,KC690927,KC690928,KC690929,KC690930,KC690931,KC690932,KC690933,KC690934,KC690935,KC690936,KC690937,KC690938,KC690939,KC690940,KC690941,KC690942,KC690943,KC690944,KC690945,KC690946,KC690947,KC690948,KC690949,KC690950,KC690951,KC690952,KC690953,KC690954,KC690955,KC690956,KC690957,KC690958,KC690959,KC690960,KC690961) in FASTA format using accession numbers provided in the supplement
   - `Haplotypes.fasta` alignment can be found in the DATA folder of the repository
 - Alignment of sequences verified by inspection in [BioEdit v 7.0.5.3](https://bioedit.software.informer.com/7.0/)
+  - The authors aligned and edited their sequences manually using bioedit (raw data is not available)
+  - While the sequences that are available are effectively already aligned (all the same length, positions in the C01 gene), we decided to also align and inspect them in python, which would have been a more robust method originally
   - Inspection using [Bio.AlignIO](https://biopython.org/docs/1.76/api/Bio.AlignIO.html) and `Alignment.ipynb` script found in the software folder of the github repository.
 
 ### Identifying sequence polymorphisms
@@ -50,10 +52,38 @@ We chose to attempt to recreate [figure 1](https://www.ncbi.nlm.nih.gov/pmc/arti
 
 ### Creating the haplotype network
 
+- We could not access [TCS](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-294x.2000.01020.x?sid=nlm%3Apubmed), the original software used to create the haplotype network as the link in this source appears to be broken.
+  - There is [another paper](https://academic.oup.com/jme/article/57/5/1488/5804183?login=true) that cites Zhong et al and performs a similar analysis
+  - We used the software used in this paper to perform our analysis
 - `plymorphic_sites_locations.nex` was opened in [PopART v1.7](https://popart.maths.otago.ac.nz/)
-- From the PopART menu we selected Network --> TCS Network
-- Colors were edited to match RGB values from the original figure using Edit --> Set Trait Color
-- Nodes and labels were rearranged for clearer visualization 
- 
+  - From the PopART menu we selected Network --> TCS Network
+  - Colors were edited to match RGB values from the original figure using Edit --> Set Trait Color
+  - Nodes and labels were rearranged for clearer visualization
+- Final PopART file can be found as `polymorphic_sites_loctations_popart.nex` in the Data folder of the GitHub repository
+- Final image produced can be found as `haplotype_network` in the presentation folder of the GitHub Repository
 
+## Comparison and Challenges
 
+### Comparison
+
+- Our results are generally similar to Zhong et al., and support some of the same conclusions:
+  - New Jersey (NJ), Texas (TX), and Italy (IT) populations are closely related
+  - "Group 1" is largely preserved in our analysis
+  - LA01 and LA11 populations are most closely related to populations from southern China (GZ,XM,JS) and Singapore (SG)
+
+- There are some minor differences in our results:
+  - individual connections appear to be variable, even if the trend is the same
+  - "Group 2" and "group 3" are not as apparent in our analysis
+  - Seem to be some minor differences in the smaller haplotypes
+
+- There are also some major differences:
+  - H17 does not appear in the Zhong et al network
+  - H17 appears to be connected to many nodes, and is one of the most connected haplotypes in our analysis
+  - After double checking, we believe this is not our mistake, and is present in the data provided
+  - While it does not appear to alter conclusions, it may have an impact on down stream results that we did not replicate
+
+### Challenges
+
+- No repository, code, or detailed description of analysis performed made this reproduction a challenge, even with a manageable amount of sequence data
+- Without access to raw data, we cannot fully recreate their analysis. For example, we cannot cross check the location data provided with sequence data to determine if there is a mistake (i.e. a typo) regarding H17
+- Haplotypes are not labeled in Zhong et al. figure, making direct comparison between the smaller nodes difficult/impossible
